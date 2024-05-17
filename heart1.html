@@ -25,6 +25,8 @@
         const heartImage = new Image();
         heartImage.src =
             'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" fill="red"/></svg>';
+
+        let textNum = 1;
         class Heart {
             constructor(type) {
                 this.type = type;
@@ -107,14 +109,17 @@
         }
 
         function getText() {
-            const val = Math.random() * 10;
-            if (val > 0 && val <= 2) {
+            textNum++;
+            if (textNum > 10) {
+                textNum = 1;
+            }
+            if (textNum === 1 || textNum === 6) {
                 return 'Yuanhua love Xu';
-            } else if (val > 2 && val <= 4) {
+            } else if (textNum === 2 || textNum === 7) {
                 return 'love';
-            } else if (val > 4 && val <= 6) {
+            } else if (textNum === 3 || textNum === 8) {
                 return 'I Love You';
-            } else if (val > 6 && val <= 8) {
+            } else if (textNum === 4 || textNum === 9) {
                 return 'Xu love Yuanhua';
             } else {
                 return 'I Love You';
