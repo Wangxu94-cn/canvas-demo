@@ -4,16 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>使用桃心形方程绘制爱心</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="600" height="600"></canvas>
+    <canvas id="canvas"></canvas>
     <script>
-        var canvas = document.querySelector('#canvas');
-        var ctx = canvas.getContext('2d');
-        ctx.font = '600px 微软雅黑'
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        ctx.font = `${window.innerHeight / 2}px 微软雅黑`;
         ctx.strokeStyle = 'red'
-        ctx.strokeText('❤', 0, 600);
+        ctx.strokeText('❤', window.innerWidth / 5, canvas.height / 1.5);
         ctx.stroke();
     </script>
 </body>
