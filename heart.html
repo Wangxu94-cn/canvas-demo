@@ -13,16 +13,29 @@
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <!-- <canvas id="canvas"></canvas> -->
     <script>
-        const canvas = document.querySelector('#canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-        ctx.font = `${window.innerHeight / 2}px 微软雅黑`;
-        ctx.strokeStyle = 'red'
-        ctx.strokeText('❤', window.innerWidth / 5, canvas.height / 1.5);
-        ctx.stroke();
+        const canvas = document.createElement("canvas");
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+        let ctx = canvas.getContext("2d");
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = "#f23232";
+        ctx.translate(w / 2, h / 2);
+        ctx.scale(1, -1);
+        ctx.moveTo(0, 0);
+        let angle = 0, x = 0, y = 0, a = 6;
+        for (let i = 0; i < 30; i += 0.2) {
+            angle = i / Math.PI;
+            x = a * (16 * Math.sin(angle) ** 3);
+            y = a * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
+            ctx.lineTo(x, y);
+        }
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+        document.body.appendChild(canvas);
     </script>
 </body>
 
